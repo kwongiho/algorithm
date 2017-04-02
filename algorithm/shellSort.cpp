@@ -1,4 +1,4 @@
-nclude <stdio.h>
+#include <stdio.h>
 
 #define SWAP(a,b)  {int t; t = a; a=b; b=t;}
 
