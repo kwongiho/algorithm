@@ -1,8 +1,10 @@
+//If you want to operate this program, you will be using GCC compiler and this program requrie int agument
 #include <stdio.h>
 #include <malloc.h>
 #include <stdlib.h>
 #include <time.h>
 #define SWAP(a,b)  {int t; t = a; a=b; b=t;}//a와 b를 교환
+
 
 void ShellSort(int *base, int n);
 void InsertionSort2(int *base, int size, int step);
