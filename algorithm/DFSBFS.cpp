@@ -34,11 +34,9 @@ void dfs(int a){
 }
 void bfs(int a){
     t_vv[a] = true;
-    que[rear] = a;
-    rear++;
+    que[rear ++ ] = a;
     while (front != rear){
-        b=que[front++];
-        printf("%d ",b);
+        printf("%d ",b=que[front++]);
         for (int i = 1; i <=1000 ; i++)
             if (!t_vv[i] && t[b][i]){
                 que[rear++] = i;
