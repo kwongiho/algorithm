@@ -1,3 +1,7 @@
+/* 
+alloc을 사용한 BFS DFS
+https://www.acmicpc.net/problem/1260 에서는 메모리초과 발생. 
+*/
 #include<stdio.h>
 #include<stdlib.h>
 bool ** t;
