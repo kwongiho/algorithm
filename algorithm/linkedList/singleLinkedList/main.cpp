@@ -35,7 +35,7 @@ int main() {
             printf("%s\n",description[i]);
 
         selectedIndex = inputValue("메뉴를 선택해 주세요 : ");
-        if(selectedIndex <=0 || selectedIndex >=arraySize)
+        if(selectedIndex <=0 || selectedIndex >arraySize)
             continue;
         switch( selectedIndex ) {
             case 1 : addLastNode(); break;
@@ -44,7 +44,7 @@ int main() {
             case 4 : nodePrint(); break;
             case 5 : sortByValue(); break;
             case 6 : reverse(); break;
-            case 7 : return programExit(); 
+            case 7 : return programExit();
         }
 
     }
@@ -134,6 +134,13 @@ void nodePrint() {
 }
 
 int programExit() {
+    Node * node = NULL;
+    linkedList->cp = linkedList->hp;
+    while(linkedList->cp!=NULL) {
+        node = linkedList->cp;
+        linkedList->cp = linkedList->cp->next;
+        free(node);
+    }
     return 0;
 }
 
@@ -161,11 +168,14 @@ bool isVariable(int value){
         return false;
     return true;
 }
+/**
+ * This function is basic library but there is no esixt in MAC
+ */
 void fflush(){
     while(getchar()!='\n');
 }
 /**
- * The node never changed
+ * The node pointer never changed
  * Just change each value.
  * will changed to insertSort or mergeSort
  */
@@ -185,18 +195,22 @@ void sortByValue() {
     }
 }
 void reverse(){
-    Node * nn;//nextNode
-    Node * cn;//currentNode
-    Node * pn; //preNode
-    nn = linkedList->hp;
-    cn = NULL;
-    pn = NULL;
-    while(nn!=NULL) {
-        pn = cn;
-        cn = nn;
-        nn = nn->next;
-        cn->next=pn;
+    Node * nextNode;//nextNode
+    Node * currentNode;//currentNode
+    Node * preNode; //preNode
+
+    nextNode = linkedList->hp;
+
+    currentNode = NULL;
+
+    preNode = NULL;
+
+    while(nextNode!=NULL) {
+        preNode = currentNode;
+        currentNode = nextNode;
+        nextNode = nextNode->next;
+        currentNode->next=preNode;
     }
-    linkedList->hp=cn;
+    linkedList->hp=currentNode;
 
 }
